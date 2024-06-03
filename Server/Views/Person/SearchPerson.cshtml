@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "Search Person";
+}
+<div class="container">
+    <h2>Search Person</h2>
+    <form method="post" enctype="multipart/form-data" class="mb-3">
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" class="form-control-file" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Search Person</button>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    @if (ViewBag.Found != null)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="@ViewBag.MainImage" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">@ViewBag.Found</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (ViewBag.Unknown != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Unknown</div>
+    }
+</div>

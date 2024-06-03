@@ -1,0 +1,49 @@
+@using System.Collections.Generic
+@using System.Text.Json
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Search Name";
+}
+<div class="container">
+    <h2>Search Name</h2>
+    <form method="post" class="mb-3">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Search Name</button>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    @if (ViewBag.Results != null)
+{
+    var results = ViewBag.Results as List<Dictionary<string, string>>;
+    if (results != null && results.Count > 0)
+    {
+        <div class="card-deck">
+            @foreach (var result in results)
+            {
+                var mainImagePath = result["main_image"];
+                <div class="card mb-4">
+                    <img class="card-img-top" src="@mainImagePath" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">@result["name"]</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">No results found.</div>
+    }
+
+    }
+    @if (ViewBag.Unknown != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Unknown</div>
+    }
+</div>

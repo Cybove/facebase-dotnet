@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Update Person";
+}
+<div class="container">
+    <h2>Update Person</h2>
+    <form method="post" enctype="multipart/form-data" class="mb-3">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" class="form-control-file" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Update Person</button>
+    </form>
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success">@ViewBag.Success</div>
+    }
+    @if (ViewBag.Unknown != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Unknown</div>
+    }
+</div>
