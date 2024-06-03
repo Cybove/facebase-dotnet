@@ -10,3 +10,9 @@ Install the required packages:
 Run the application:
 
 `python cli.py --help`
+
+Server:
+
+`cd server`
+
+`dotnet run`
